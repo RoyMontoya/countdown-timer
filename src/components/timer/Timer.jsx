@@ -12,6 +12,7 @@ class Timer extends Component{
       minutes: 0,
       hours: 0,
       days: 0,
+      interval: null
     }
 
     this.startCount = this.startCount.bind(this);
@@ -19,14 +20,27 @@ class Timer extends Component{
     this.displayMinutes = this.displayMinutes.bind(this);
     this.displayHours = this.displayHours.bind(this);
     this.displayTime = this.displayTime.bind(this);
+    this.checkInterval = this.checkInterval.bind(this);
   }
 
   startCount(time){
     const timerTime =  time + Date.now() + 2000 //compensation time to start
-    setInterval(() =>{
+    const timerInterval = setInterval(() =>{
       const timeLeft = timerTime - Date.now();
-      if(timeLeft > 0)this.displayTime(timeLeft)
+      this.displayTime(timeLeft)
+      this.checkInterval()
     },1000)
+    this.setState({interval: timerInterval})
+  }
+
+  checkInterval(){
+    if(this.state.seconds == 0 &&
+       this.state.minutes == 0 &&
+       this.state.hours == 0 &&
+       this.state.days == 0 &&
+       this.state.interval){
+         clearInterval(this.state.interval);
+       }
   }
 
   displaySeconds(timeLeft){
