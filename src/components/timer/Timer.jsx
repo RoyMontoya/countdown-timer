@@ -41,15 +41,12 @@ class Timer extends Component{
   }
 
   displayHours(timeLeft){
-    // const hoursLeft = Math.floor((timeLeft / (1000*60*60)))
     const hoursLeft = miliUtil.getTimeFromMili(timeLeft, 'hour')
     this.setState({hours: hoursLeft})
-    // this.displayMinutes(timeLeft - (hoursLeft * 1000*60*60))
     this.displayMinutes(miliUtil.getTimeLeftInMili(timeLeft, hoursLeft, 'hour'))
   }
 
   displayTime(timeLeft){
-    // const daysLeft = Math.floor((timeLeft / (60*60*24*1000)))
     const daysLeft = miliUtil.getTimeFromMili(timeLeft, 'day')
     this.setState({days: daysLeft})
     this.displayHours(miliUtil.getTimeLeftInMili(timeLeft, daysLeft, 'day'))

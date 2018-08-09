@@ -1,3 +1,4 @@
+const SECOND_CONSTANT = 1000
 const MINUTE_CONSTANT = 1000 * 60;
 const HOUR_CONSTANT = 1000*60*60;
 const DAYS_CONSTANT = 24*60*60*1000;
@@ -14,6 +15,10 @@ function getTimeLeftInMili(timeLeft, unitLeft, unit){
   return timeLeft - (unitLeft * getUnitConstant(unit))
 }
 
+function getTimeInMili(time, unit){
+  return (time * getUnitConstant(unit))
+}
+
 function getUnitConstant(unit){
   switch (unit) {
     case 'minute':
@@ -22,8 +27,10 @@ function getUnitConstant(unit){
       return HOUR_CONSTANT;
     case 'day':
       return DAYS_CONSTANT
+    case 'second':
+      return SECOND_CONSTANT
     default:
-      0;
+      return 0;
   }
 }
 
@@ -31,6 +38,7 @@ const miliUtil = {
   getSecondsFromMili,
   getTimeFromMili,
   getTimeLeftInMili,
+  getTimeInMili
 }
 
 export default miliUtil;
