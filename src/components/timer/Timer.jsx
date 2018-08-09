@@ -10,7 +10,7 @@ class Timer extends Component{
     super(props);
 
     this.state = {
-      default: 1534446000000,
+      default: Date.now() + (2*24*60*60*1000) + 5000,
       seconds: 0,
       minutes: 0,
       hours: 0,
