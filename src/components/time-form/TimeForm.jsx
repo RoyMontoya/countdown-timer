@@ -16,32 +16,29 @@ class TimeForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    // this.calculateTotal = this.calculateTotal.bind(this)
+    this.calculateTotal = this.calculateTotal.bind(this)
   }
 
-  // calculateTotal(){
-    // console.log(this.state);
-    // const total = miliUtil.getTimeInMili(this.state.days, 'day') +
-    // miliUtil.getTimeInMili(this.state.hours, 'hour') +
-    // miliUtil.getTimeInMili(this.state.minutes, 'minute') +
-    // miliUtil.getTimeInMili(this.state.seconds, 'second') +
+  calculateTotal(){
+    const total = miliUtil.getTimeInMili(this.state.day, 'day') +
+    miliUtil.getTimeInMili(this.state.hour, 'hour') +
+    miliUtil.getTimeInMili(this.state.minute, 'minute') +
+    miliUtil.getTimeInMili(this.state.second, 'second');
 
-    // console.log(total);
+    console.log(total);
 
-  // }
+  }
 
   handleChange(name, value){
     console.log(name, value);
-    // const result = {...this.state}
-    // result[name] = value
-    // this.setState(result)
-    // this.calculateTotal()
-  
-
-    console.log(this.state);
+    const result = {...this.state}
+    result[name] = value
+    this.setState(result)
   }
 
   render(){
+    // console.log(this.state);
+    this.calculateTotal();
     return (
       <div>
         <form className="time-form">

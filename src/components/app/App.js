@@ -16,6 +16,8 @@ class App extends Component {
     this.refs.timer.startCount();
   }
 
+
+
   render() {
     return (
       <div className="App">
