@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import './Timer.css'
 import TimeBox from '../timebox/TimeBox'
+// import {getSecondsFromMili} from '../../utilities/MilisecondsTransformer'
+// import {getMinutesFromMili} from '../../utilities/MilisecondsTransformer'
+// import {getSecondsLeftInMili} from '../../utilities/MilisecondsTransformer'
+import transformer from '../../utilities/MilisecondsTransformer'
+
+
 
 class Timer extends Component{
   constructor(props){
@@ -29,24 +35,27 @@ class Timer extends Component{
   }
 
   displaySeconds(timeLeft){
-    const secondsLeft = Math.floor((timeLeft / 1000) % 60)
+    const secondsLeft = transformer.getSecondsFromMili(timeLeft)
     this.setState({seconds: secondsLeft})
   }
 
   displayMinutes(timeLeft){
-    const minutesLeft = Math.floor((timeLeft / (1000 * 60)))
+    const minutesLeft = transformer.getMinutesFromMili(timeLeft, 'minute')
     this.setState({minutes: minutesLeft})
-    this.displaySeconds(timeLeft - (minutesLeft * 1000 * 60))
+    this.displaySeconds(transformer.getSecondsLeftInMili(timeLeft, minutesLeft))
   }
 
   displayHours(timeLeft){
-    const hoursLeft = Math.floor((timeLeft / (1000*60*60)))
+    // const hoursLeft = Math.floor((timeLeft / (1000*60*60)))
+    const hoursLeft = transformer.getHoursFromMili(timeLeft, 'hour')
     this.setState({hours: hoursLeft})
-    this.displayMinutes(timeLeft - (hoursLeft * 1000*60*60))
+    // this.displayMinutes(timeLeft - (hoursLeft * 1000*60*60))
+    this.displayMinutes(transformer.getMinutesLeftInMili(timeLeft, hoursLeft))
   }
 
   displayTime(timeLeft){
-    const daysLeft = Math.floor((timeLeft / (60*60*24*1000)))
+    // const daysLeft = Math.floor((timeLeft / (60*60*24*1000)))
+    const daysLeft = transformer.getDaysFromMili(timeLeft, 'day')
     this.setState({days: daysLeft})
     this.displayHours(timeLeft - (daysLeft * 24 * 60 * 60 * 1000))
   }
