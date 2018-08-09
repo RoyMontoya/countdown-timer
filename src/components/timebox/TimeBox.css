@@ -1,0 +1,22 @@
+.time-box{
+  /* background: blue; */
+  height: 100px;
+  width: 100px;
+  margin: 15px;
+  border: 2px solid #999;
+  border-radius: 5px;
+  display: flex;
+}
+
+.values-container{
+  margin: auto;
+}
+
+.time-text{
+  font-size: large;
+  color: #999;
+}
+
+.time-value{
+  font-size: 35px;
+}
