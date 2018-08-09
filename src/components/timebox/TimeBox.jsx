@@ -7,7 +7,7 @@ class TimeBox extends Component{
     return(
       <div className="time-box">
         <div className="values-container">
-          <div className="time-value">1</div>
+          <div className="time-value">{(this.props.value) ? this.props.value : 0}</div>
           <div className="time-text">{this.props.text}</div>
         </div>
       </div>
