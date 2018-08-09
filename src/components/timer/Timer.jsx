@@ -22,9 +22,9 @@ class Timer extends Component{
     this.displayTime = this.displayTime.bind(this);
   }
 
-  startCount(){
+  startCount(time){
     setInterval(() =>{
-      const timeLeft = this.state.default - Date.now();
+      const timeLeft = time - Date.now();
       this.displayTime(timeLeft)
     },1000)
   }

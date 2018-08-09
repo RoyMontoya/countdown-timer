@@ -8,22 +8,30 @@ class App extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      time:0
+    }
 
     this.startCount = this.startCount.bind(this)
+    this.getTotal = this.getTotal.bind(this)
+
   }
 
   startCount(){
-    this.refs.timer.startCount();
+    console.log(this.refs.form.calculateTotal());
+    this.refs.timer.startCount(this.refs.form.calculateTotal() + Date.now());
   }
 
-
+  getTotal(total){
+    this.setState({time: total})
+  }
 
   render() {
     return (
       <div className="App">
         <Header/>
         <Timer ref="timer"/>
-        <TimeForm/>
+        <TimeForm ref="form"/>
         <button className="btn btn-success" onClick={this.startCount}>Start</button>
       </div>
     );

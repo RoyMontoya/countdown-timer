@@ -24,8 +24,8 @@ class TimeForm extends Component {
     miliUtil.getTimeInMili(this.state.hour, 'hour') +
     miliUtil.getTimeInMili(this.state.minute, 'minute') +
     miliUtil.getTimeInMili(this.state.second, 'second');
-
-    console.log(total);
+    return total;
+    
 
   }
 
@@ -38,7 +38,7 @@ class TimeForm extends Component {
 
   render(){
     // console.log(this.state);
-    this.calculateTotal();
+    // this.calculateTotal();
     return (
       <div>
         <form className="time-form">
