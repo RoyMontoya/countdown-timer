@@ -8,7 +8,6 @@ class Timer extends Component{
     super(props);
 
     this.state = {
-      default: 1534446000000,
       seconds: 0,
       minutes: 0,
       hours: 0,
@@ -23,8 +22,9 @@ class Timer extends Component{
   }
 
   startCount(time){
+    const timerTime =  time + Date.now() + 2000 //compensation time to start
     setInterval(() =>{
-      const timeLeft = time - Date.now();
+      const timeLeft = timerTime - Date.now();
       this.displayTime(timeLeft)
     },1000)
   }

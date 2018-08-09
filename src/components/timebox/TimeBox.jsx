@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './Style.css'
 
 class TimeBox extends Component{
@@ -14,5 +15,10 @@ class TimeBox extends Component{
     )
   }
 }
+
+TimeBox.propTypes = {
+  value: PropTypes.number,
+  text: PropTypes.string
+};
 
 export default TimeBox;

@@ -19,7 +19,7 @@ class App extends Component {
 
   startCount(){
     console.log(this.refs.form.calculateTotal());
-    this.refs.timer.startCount(this.refs.form.calculateTotal() + Date.now());
+    this.refs.timer.startCount(this.refs.form.calculateTotal());
   }
 
   getTotal(total){
