@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
-import './Timer.css'
+import './Style.css'
 import TimeBox from '../timebox/TimeBox'
 import miliUtil from '../../utilities/MilisecondsUtil'
-
-
 
 class Timer extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-      default: Date.now() + (2*24*60*60*1000) + 5000,
       seconds: 0,
       minutes: 0,
       hours: 0,
@@ -24,9 +21,10 @@ class Timer extends Component{
     this.displayTime = this.displayTime.bind(this);
   }
 
-  startCount(){
+  startCount(time){
+    const timerTime =  time + Date.now() + 2000 //compensation time to start
     setInterval(() =>{
-      const timeLeft = this.state.default - Date.now();
+      const timeLeft = timerTime - Date.now();
       this.displayTime(timeLeft)
     },1000)
   }
@@ -43,23 +41,18 @@ class Timer extends Component{
   }
 
   displayHours(timeLeft){
-    // const hoursLeft = Math.floor((timeLeft / (1000*60*60)))
     const hoursLeft = miliUtil.getTimeFromMili(timeLeft, 'hour')
     this.setState({hours: hoursLeft})
-    // this.displayMinutes(timeLeft - (hoursLeft * 1000*60*60))
     this.displayMinutes(miliUtil.getTimeLeftInMili(timeLeft, hoursLeft, 'hour'))
   }
 
   displayTime(timeLeft){
-    // const daysLeft = Math.floor((timeLeft / (60*60*24*1000)))
     const daysLeft = miliUtil.getTimeFromMili(timeLeft, 'day')
     this.setState({days: daysLeft})
     this.displayHours(miliUtil.getTimeLeftInMili(timeLeft, daysLeft, 'day'))
   }
 
-
   render(){
-
     return(
       <div className="timer">
         <TimeBox text={'Days'} value={this.state.days}/>
