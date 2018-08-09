@@ -25,7 +25,7 @@ class Timer extends Component{
     const timerTime =  time + Date.now() + 2000 //compensation time to start
     setInterval(() =>{
       const timeLeft = timerTime - Date.now();
-      this.displayTime(timeLeft)
+      if(timeLeft > 0)this.displayTime(timeLeft)
     },1000)
   }
 

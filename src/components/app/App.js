@@ -16,7 +16,8 @@ class App extends Component {
   }
 
   startCount(){
-    this.refs.timer.startCount(this.refs.form.calculateTotal());
+    const total = this.refs.form.calculateTotal()
+    if(total)this.refs.timer.startCount(total);
   }
 
   render() {
