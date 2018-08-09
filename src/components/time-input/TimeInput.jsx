@@ -23,7 +23,6 @@ class TimeInput extends Component {
       </div>
     )
   }
-
 }
 
 TimeInput.propTypes = {
