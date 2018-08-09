@@ -4,14 +4,23 @@ import Header from '../header/Header'
 import Timer from '../timer/Timer'
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+
+    this.startCount = this.startCount.bind(this)
+  }
+
+  startCount(){
+    this.refs.timer.startCount();
+  }
+
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header> */}
         <Header/>
-        <Timer/>
+        <Timer ref="timer"/>
+        <button className="start-button" onClick={this.startCount}>Start</button>
       </div>
     );
   }

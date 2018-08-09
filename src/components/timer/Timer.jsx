@@ -60,7 +60,6 @@ class Timer extends Component{
         <TimeBox text={'Hours'} value={this.state.hours}/>
         <TimeBox text={'Minutes'} value={this.state.minutes}/>
         <TimeBox text={'Seconds'} value = {this.state.seconds}/>
-        <button onClick={this.startCount}>Start</button>
       </div>
     )
   }
