@@ -12,7 +12,6 @@ class TimeForm extends Component {
       hour: 0,
       minute: 0,
       second: 0,
-      totalMili: 0,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -20,25 +19,19 @@ class TimeForm extends Component {
   }
 
   calculateTotal(){
-    const total = miliUtil.getTimeInMili(this.state.day, 'day') +
+    return miliUtil.getTimeInMili(this.state.day, 'day') +
     miliUtil.getTimeInMili(this.state.hour, 'hour') +
     miliUtil.getTimeInMili(this.state.minute, 'minute') +
     miliUtil.getTimeInMili(this.state.second, 'second');
-    return total;
-    
-
   }
 
   handleChange(name, value){
-    console.log(name, value);
     const result = {...this.state}
     result[name] = value
     this.setState(result)
   }
 
   render(){
-    // console.log(this.state);
-    // this.calculateTotal();
     return (
       <div>
         <form className="time-form">

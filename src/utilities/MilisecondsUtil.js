@@ -26,9 +26,9 @@ function getUnitConstant(unit){
     case 'hour':
       return HOUR_CONSTANT;
     case 'day':
-      return DAYS_CONSTANT
+      return DAYS_CONSTANT;
     case 'second':
-      return SECOND_CONSTANT
+      return SECOND_CONSTANT;
     default:
       return 0;
   }

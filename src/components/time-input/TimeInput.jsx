@@ -27,7 +27,6 @@ class TimeInput extends Component {
 }
 
 TimeInput.propTypes = {
-  name: PropTypes.string,
   handle: PropTypes.func,
   name: PropTypes.string,
   min: PropTypes.string,

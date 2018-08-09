@@ -13,17 +13,10 @@ class App extends Component {
     }
 
     this.startCount = this.startCount.bind(this)
-    this.getTotal = this.getTotal.bind(this)
-
   }
 
   startCount(){
-    console.log(this.refs.form.calculateTotal());
     this.refs.timer.startCount(this.refs.form.calculateTotal());
-  }
-
-  getTotal(total){
-    this.setState({time: total})
   }
 
   render() {
