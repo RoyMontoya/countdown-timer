@@ -34,10 +34,10 @@ class Timer extends Component{
   }
 
   checkInterval(){
-    if(this.state.seconds == 0 &&
-       this.state.minutes == 0 &&
-       this.state.hours == 0 &&
-       this.state.days == 0 &&
+    if(this.state.seconds === 0 &&
+       this.state.minutes === 0 &&
+       this.state.hours === 0 &&
+       this.state.days === 0 &&
        this.state.interval){
          clearInterval(this.state.interval);
        }
