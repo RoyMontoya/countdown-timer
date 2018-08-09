@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Style.css'
 import Header from '../header/Header'
 import Timer from '../timer/Timer'
 import TimeForm from '../time-form/TimeForm'

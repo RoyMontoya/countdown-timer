@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './TimeBox.css'
+import './Style.css'
 
 class TimeBox extends Component{
 

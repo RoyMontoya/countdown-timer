@@ -1,18 +1,29 @@
 import React, {Component} from 'react';
+import './Style.css'
 
 class TimeInput extends Component {
+  constructor(props){
+    super(props)
 
+    this.state = { value: this.props.value}
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e){
+    this.setState({value: e.target.value})
+  }
 
   render(){
     return(
       <div>
-        <label>{this.props.name}</label>
-        <input type="number" name={this.props.name}
+        <label className="input-element">{this.props.name}</label>
+        <input onChange={this.handleChange} type="number" name={this.props.name}
+          value = {this.state.value}
           min={this.props.min}
           max={this.props.max}/>
       </div>
     )
-
   }
 
 }

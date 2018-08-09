@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import './Timer.css'
+import './Style.css'
 import TimeBox from '../timebox/TimeBox'
 import miliUtil from '../../utilities/MilisecondsUtil'
-
-
 
 class Timer extends Component{
   constructor(props){
@@ -57,9 +55,7 @@ class Timer extends Component{
     this.displayHours(miliUtil.getTimeLeftInMili(timeLeft, daysLeft, 'day'))
   }
 
-
   render(){
-
     return(
       <div className="timer">
         <TimeBox text={'Days'} value={this.state.days}/>
