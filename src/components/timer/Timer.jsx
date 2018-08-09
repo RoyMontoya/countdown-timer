@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import './Timer.css'
 import TimeBox from '../timebox/TimeBox'
-// import {getSecondsFromMili} from '../../utilities/MilisecondsTransformer'
-// import {getMinutesFromMili} from '../../utilities/MilisecondsTransformer'
-// import {getSecondsLeftInMili} from '../../utilities/MilisecondsTransformer'
-import transformer from '../../utilities/MilisecondsTransformer'
+import miliUtil from '../../utilities/MilisecondsUtil'
 
 
 
@@ -35,29 +32,29 @@ class Timer extends Component{
   }
 
   displaySeconds(timeLeft){
-    const secondsLeft = transformer.getSecondsFromMili(timeLeft)
+    const secondsLeft = miliUtil.getSecondsFromMili(timeLeft)
     this.setState({seconds: secondsLeft})
   }
 
   displayMinutes(timeLeft){
-    const minutesLeft = transformer.getMinutesFromMili(timeLeft, 'minute')
+    const minutesLeft = miliUtil.getTimeFromMili(timeLeft, 'minute')
     this.setState({minutes: minutesLeft})
-    this.displaySeconds(transformer.getSecondsLeftInMili(timeLeft, minutesLeft))
+    this.displaySeconds(miliUtil.getTimeLeftInMili(timeLeft, minutesLeft,'minute'))
   }
 
   displayHours(timeLeft){
     // const hoursLeft = Math.floor((timeLeft / (1000*60*60)))
-    const hoursLeft = transformer.getHoursFromMili(timeLeft, 'hour')
+    const hoursLeft = miliUtil.getTimeFromMili(timeLeft, 'hour')
     this.setState({hours: hoursLeft})
     // this.displayMinutes(timeLeft - (hoursLeft * 1000*60*60))
-    this.displayMinutes(transformer.getMinutesLeftInMili(timeLeft, hoursLeft))
+    this.displayMinutes(miliUtil.getTimeLeftInMili(timeLeft, hoursLeft, 'hour'))
   }
 
   displayTime(timeLeft){
     // const daysLeft = Math.floor((timeLeft / (60*60*24*1000)))
-    const daysLeft = transformer.getDaysFromMili(timeLeft, 'day')
+    const daysLeft = miliUtil.getTimeFromMili(timeLeft, 'day')
     this.setState({days: daysLeft})
-    this.displayHours(timeLeft - (daysLeft * 24 * 60 * 60 * 1000))
+    this.displayHours(miliUtil.getTimeLeftInMili(timeLeft, daysLeft, 'day'))
   }
 
 
