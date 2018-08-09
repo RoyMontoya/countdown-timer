@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Timer ref="timer"/>
-        <button className="start-button" onClick={this.startCount}>Start</button>
+        <button className="btn btn-success" onClick={this.startCount}>Start</button>
       </div>
     );
   }
