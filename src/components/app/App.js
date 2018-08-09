@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../header/Header'
 import Timer from '../timer/Timer'
+import TimeForm from '../time-form/TimeForm'
 
 class App extends Component {
   constructor(props){
@@ -20,6 +21,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Timer ref="timer"/>
+        <TimeForm/>
         <button className="btn btn-success" onClick={this.startCount}>Start</button>
       </div>
     );
