@@ -19,8 +19,6 @@ class App extends Component {
 
   startCount(){
     console.log(this.isTimerNotEmpty());
-    // const total = this.refs.form.calculateTotal()
-    // if(total)this.refs.timer.startCount(total);
     // if(this.state.time)this.refs.timer.startCount(this.state.time);
   }
 
