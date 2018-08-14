@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import miliUtil from '../../utilities/MilisecondsUtil'
 import {updateUnit} from '../../reducers/timeReducer'
 import './Style.css'
 
 class TimeInput extends Component {
   constructor(props){
     super(props)
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -37,6 +35,4 @@ TimeInput.propTypes = {
   max: PropTypes.string
 };
 
-export default connect(null,
-{updateUnit})
-(TimeInput);
+export default connect(null,{updateUnit})(TimeInput)
