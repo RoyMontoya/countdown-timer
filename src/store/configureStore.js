@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux'
+import {createStore} from 'redux'
 import reducer from '../reducers/timeReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 

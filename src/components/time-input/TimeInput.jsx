@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import miliUtil from '../../utilities/MilisecondsUtil'
+import {updateUnit} from '../../reducers/timeReducer'
 import './Style.css'
 
 class TimeInput extends Component {
@@ -10,7 +13,9 @@ class TimeInput extends Component {
   }
 
   handleChange(e){
-    this.props.handle(this.props.name, e.target.value)
+    const {name} = this.props;
+    const {value} = e.target;
+    this.props.updateUnit({name, value})
   }
 
   render(){
@@ -32,4 +37,6 @@ TimeInput.propTypes = {
   max: PropTypes.string
 };
 
-export default TimeInput
+export default connect(null,
+{updateUnit})
+(TimeInput);
