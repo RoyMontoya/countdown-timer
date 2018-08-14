@@ -10,12 +10,18 @@ class App extends Component {
     super(props);
 
     this.startCount = this.startCount.bind(this)
+    this.isTimerNotEmpty = this.isTimerNotEmpty.bind(this)
+  }
+
+  isTimerNotEmpty(){
+    return (this.props.day || this.props.hour || this.props.minute || this.props.second > 0);
   }
 
   startCount(){
+    console.log(this.isTimerNotEmpty());
     // const total = this.refs.form.calculateTotal()
     // if(total)this.refs.timer.startCount(total);
-    if(this.state.time)this.refs.timer.startCount(this.state.time);
+    // if(this.state.time)this.refs.timer.startCount(this.state.time);
   }
 
   render() {
@@ -30,4 +36,8 @@ class App extends Component {
   }
 }
 
-export default connect((state) => ({time: state.time}))(App);
+export default connect((state) => ({day: state.day,
+hour: state.hour,
+minute: state.minute,
+second: state.second
+}))(App);
