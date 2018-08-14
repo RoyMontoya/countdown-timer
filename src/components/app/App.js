@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Header from '../header/Header'
 import Timer from '../timer/Timer'
 import TimeForm from '../time-form/TimeForm'
+import miliUtil from '../../utilities/MilisecondsUtil'
 
 class App extends Component {
   constructor(props){
@@ -11,6 +12,7 @@ class App extends Component {
 
     this.startCount = this.startCount.bind(this)
     this.isTimerNotEmpty = this.isTimerNotEmpty.bind(this)
+    this.calculateTotal = this.calculateTotal.bind(this)
   }
 
   isTimerNotEmpty(){
@@ -18,8 +20,14 @@ class App extends Component {
   }
 
   startCount(){
-    console.log(this.isTimerNotEmpty());
-    // if(this.state.time)this.refs.timer.startCount(this.state.time);
+    if(this.isTimerNotEmpty())this.refs.timer.startCount(this.calculateTotal());
+  }
+
+  calculateTotal(){
+    return miliUtil.getTimeInMili(this.props.day, 'day') +
+    miliUtil.getTimeInMili(this.props.hour, 'hour') +
+    miliUtil.getTimeInMili(this.props.minute, 'minute') +
+    miliUtil.getTimeInMili(this.props.second, 'second');
   }
 
   render() {
@@ -27,14 +35,15 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Timer ref="timer"/>
-        <TimeForm ref="form"/>
+        <TimeForm />
         <button className="btn btn-success" onClick={this.startCount}>Start</button>
       </div>
     );
   }
 }
 
-export default connect((state) => ({day: state.day,
+export default connect((state) => ({
+day: state.day,
 hour: state.hour,
 minute: state.minute,
 second: state.second
